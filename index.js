@@ -10,10 +10,10 @@ connectDB();
 // Middleware to parse JSON
 app.use(express.json());
 
-// Basic route
-app.get('/', (req, res) => {
-    res.send('Hello, MongoDB!');
-});
+app.use(express.static('public'));
+
+app.use('/api/tipos-usuario', require('./routes/tiposUsuario'));
+app.use('/api/usuarios', require('./routes/usuarios'));
 
 // Start the server
 app.listen(PORT, () => {
